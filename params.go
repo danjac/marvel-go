@@ -3,7 +3,17 @@ package main
 import (
 	"strconv"
 	"time"
+    "strings"
 )
+
+func makeIntString(a []int) string {
+	l := make([]string, len(a))
+	for _, v := range a {
+		l = append(l, strconv.Itoa((int)(v)))
+	}
+	return strings.Join(l, ",")
+}
+
 
 type ComicQueryParams struct {
 	Format            string

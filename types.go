@@ -1,5 +1,30 @@
 package main
 
+import (
+    "bytes"
+    "time"
+    "encoding/json"
+)
+
+type JsonTime time.Time
+
+func (jt *JsonTime) UnmarshalJSON(data []byte) error {
+
+	b := bytes.NewBuffer(data)
+	dec := json.NewDecoder(b)
+	var s string
+	if err := dec.Decode(&s); err != nil {
+		return err
+	}
+	t, err := time.Parse(defaultDateFmt, s)
+	if err != nil {
+		return err
+	}
+	*jt = (JsonTime)(t)
+	return nil
+}
+
+
 type TextObject struct {
 	Type     string `json "type"`
 	Language string `json "language"`

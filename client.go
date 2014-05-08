@@ -1,7 +1,6 @@
 package main
 
 import (
-	"bytes"
 	"crypto/md5"
 	"encoding/json"
 	"fmt"
@@ -9,8 +8,6 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
-	"strconv"
-	"strings"
 	"time"
 )
 
@@ -18,32 +15,6 @@ const (
 	baseURL        = "http://gateway.marvel.com:80/v1/public/"
 	defaultDateFmt = "2006-01-02T15:04:05-0700"
 )
-
-type JsonTime time.Time
-
-func (jt *JsonTime) UnmarshalJSON(data []byte) error {
-
-	b := bytes.NewBuffer(data)
-	dec := json.NewDecoder(b)
-	var s string
-	if err := dec.Decode(&s); err != nil {
-		return err
-	}
-	t, err := time.Parse(defaultDateFmt, s)
-	if err != nil {
-		return err
-	}
-	*jt = (JsonTime)(t)
-	return nil
-}
-
-func makeIntString(a []int) string {
-	l := make([]string, len(a))
-	for _, v := range a {
-		l = append(l, strconv.Itoa((int)(v)))
-	}
-	return strings.Join(l, ",")
-}
 
 type Client struct {
 	PublicKey  string
