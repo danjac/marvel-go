@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+    "marvel"
 )
 
 func main() {
@@ -22,13 +23,13 @@ func main() {
 		log.Fatal("MARVEL_PRIVATE_KEY must be set in environment")
 	}
 
-	client := NewClient(public_key, private_key)
+	client := marvel.NewClient(public_key, private_key)
 	m := martini.Classic()
 
 	m.Use(render.Renderer(render.Options{IndentJSON: true}))
 
 	m.Get("/api/comics", func(r render.Render) {
-		params := &ComicQueryParams{Limit: 20}
+		params := &marvel.ComicQueryParams{Limit: 20}
 		comics, err := client.GetComics(params)
 		if err != nil {
 			log.Fatal(err)
