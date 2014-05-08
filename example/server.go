@@ -1,9 +1,9 @@
 package main
 
 import (
+	"github.com/danjac/marvel-go/marvel"
 	"github.com/go-martini/martini"
 	"github.com/martini-contrib/render"
-    "github.com/danjac/marvel-go/marvel"
 	"log"
 	"net/http"
 	"os"
