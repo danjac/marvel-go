@@ -4,20 +4,19 @@ import (
 	"github.com/go-martini/martini"
 	"github.com/martini-contrib/render"
 	"log"
-    "os"
 	"net/http"
+	"os"
 )
-
 
 func main() {
 
-    public_key := os.Getenv("MARVEL_PUBLIC_KEY")
+	public_key := os.Getenv("MARVEL_PUBLIC_KEY")
 
 	if public_key == "" {
 		log.Fatal("MARVEL_PUBLIC_KEY must be set in environment")
 	}
 
-    private_key := os.Getenv("MARVEL_PRIVATE_KEY")
+	private_key := os.Getenv("MARVEL_PRIVATE_KEY")
 
 	if private_key == "" {
 		log.Fatal("MARVEL_PRIVATE_KEY must be set in environment")

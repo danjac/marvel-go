@@ -291,7 +291,6 @@ func (client *Client) buildUrl(endpoint string, arguments map[string]string) str
 	for k, v := range arguments {
 		q.Set(k, v)
 	}
-	fmt.Println(q)
 
 	return fmt.Sprintf("%s%s?%s", baseURL, endpoint, q.Encode())
 }
