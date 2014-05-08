@@ -84,7 +84,7 @@ func (client *Client) GetComic(comicId string) (*Comic, error) {
 }
 
 func (client *Client) GetComics(p *ComicQueryParams) ([]Comic, error) {
-	resp, err := client.GetResponse("comics", p.ToQueryString())
+	resp, err := client.GetResponse("comics", p.QueryArgs())
 	if err != nil {
 		return nil, err
 	}

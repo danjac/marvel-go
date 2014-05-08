@@ -40,7 +40,7 @@ type ComicQueryParams struct {
 	Offset            int
 }
 
-func (p *ComicQueryParams) ToQueryString() map[string]string {
+func (p *ComicQueryParams) QueryArgs() map[string]string {
 	args := make(map[string]string)
 	if p.Format != "" {
 		args["format"] = p.Format

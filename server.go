@@ -4,9 +4,9 @@ import (
 	"github.com/go-martini/martini"
 	"github.com/martini-contrib/render"
 	"log"
+	"marvel"
 	"net/http"
 	"os"
-    "marvel"
 )
 
 func main() {
