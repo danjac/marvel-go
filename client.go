@@ -11,10 +11,7 @@ import (
 	"time"
 )
 
-const (
-	baseURL        = "http://gateway.marvel.com:80/v1/public/"
-	defaultDateFmt = "2006-01-02T15:04:05-0700"
-)
+const baseURL = "http://gateway.marvel.com:80/v1/public/"
 
 type Client struct {
 	PublicKey  string

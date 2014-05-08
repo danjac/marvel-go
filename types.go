@@ -1,10 +1,12 @@
 package main
 
 import (
-    "bytes"
-    "time"
-    "encoding/json"
+	"bytes"
+	"encoding/json"
+	"time"
 )
+
+const defaultDateFmt = "2006-01-02T15:04:05-0700"
 
 type JsonTime time.Time
 
@@ -23,7 +25,6 @@ func (jt *JsonTime) UnmarshalJSON(data []byte) error {
 	*jt = (JsonTime)(t)
 	return nil
 }
-
 
 type TextObject struct {
 	Type     string `json "type"`

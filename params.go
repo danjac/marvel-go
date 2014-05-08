@@ -2,8 +2,8 @@ package main
 
 import (
 	"strconv"
+	"strings"
 	"time"
-    "strings"
 )
 
 func makeIntString(a []int) string {
@@ -13,7 +13,6 @@ func makeIntString(a []int) string {
 	}
 	return strings.Join(l, ",")
 }
-
 
 type ComicQueryParams struct {
 	Format            string
